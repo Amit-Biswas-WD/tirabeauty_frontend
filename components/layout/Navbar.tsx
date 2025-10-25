@@ -1,7 +1,18 @@
+import Image from "next/image";
+import { Container } from "../common/Container";
+
 export const Navbar = () => {
   return (
-    <div className="flex items-center justify-end gap-2 my-2 mx-10 text-xs">
-      Navbar
-    </div>
+    <Container className="grid grid-cols-2 gap-4">
+      <div className="col-span-1 flex items-center">
+        <Image
+          src="/icons/tira.webp"
+          width={55}
+          height={24}
+          alt="Picture of the author"
+        />
+      </div>
+      <div className=""></div>
+    </Container>
   );
 };
