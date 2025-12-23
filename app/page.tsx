@@ -4,6 +4,7 @@ import CategoryNavbar from "@/components/layout/CategoryNavbar";
 import { HeroSection } from "@/components/layout/HeroSection";
 import Navbar from "@/components/layout/Navbar";
 import TopBar from "@/components/layout/TopBar";
+import TopCategories from "@/components/layout/TopCategories";
 import { JSX } from "react";
 
 export default function Home(): JSX.Element {
@@ -20,6 +21,7 @@ export default function Home(): JSX.Element {
         {/* Page Content */}
         <div>
           <HeroSection />
+          <TopCategories />
         </div>
       </div>
     </div>
