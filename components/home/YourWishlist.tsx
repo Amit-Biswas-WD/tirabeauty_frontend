@@ -44,6 +44,8 @@ const topBanner: TopBanner[] = [
   },
 ];
 
-export function TopCategories() {
-  return <ReusableCategoryCard topBanner={topBanner} />;
+export function YourWishlist() {
+  return (
+    <ReusableCategoryCard headingTitle="Your Wishlist" topBanner={topBanner} />
+  );
 }

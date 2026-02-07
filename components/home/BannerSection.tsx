@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import { ReusableHeroBanner } from "../common/ReusableHeroBanner";
 
 const banners: string[] = [
@@ -10,6 +9,6 @@ const banners: string[] = [
   "/images/home/banner_section/14days.jpeg",
 ];
 
-export const BannerSection = (): JSX.Element => {
+export function BannerSection() {
   return <ReusableHeroBanner banners={banners} />;
-};
+}
