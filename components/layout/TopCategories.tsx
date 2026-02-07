@@ -48,7 +48,7 @@ const topBanner: TopBanner[] = [
 
 const GAP = 14;
 
-const TopCategories = (): JSX.Element => {
+export const TopCategories = (): JSX.Element => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(5);
   const [cardWidth, setCardWidth] = useState(0);
@@ -148,5 +148,3 @@ const TopCategories = (): JSX.Element => {
     </div>
   );
 };
-
-export default TopCategories;

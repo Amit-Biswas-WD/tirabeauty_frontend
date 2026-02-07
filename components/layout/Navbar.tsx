@@ -129,7 +129,7 @@ const Navbar: React.FC = () => {
               >
                 {item}
               </Link>
-            )
+            ),
           )}
         </div>
       </aside>
