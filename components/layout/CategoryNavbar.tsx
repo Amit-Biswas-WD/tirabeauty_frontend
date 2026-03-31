@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { JSX } from "react";
 
 const categories = [
   { id: 1, label: "What's New", href: "/whats-new" },
@@ -16,10 +17,10 @@ const categories = [
   { id: 13, label: "Gifts", href: "/gifts" },
 ];
 
-const CategoryNavbar = () => {
+const CategoryNavbar = (): JSX.Element => {
   return (
-    <nav className="w-full py-3">
-      <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar px-4">
+    <nav className="w-full py-3 lg:block hidden">
+      <div className="flex items-center justify-between xl:gap-4 gap-[55px] overflow-x-auto no-scrollbar xl:px-4">
         {categories.map((item) => (
           <Link
             key={item.id}
