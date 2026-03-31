@@ -3,6 +3,7 @@ import { TopCategories } from "@/components/layout/TopCategories";
 import { BannerSection } from "./BannerSection";
 import { YourWishlist } from "./YourWishlist";
 import { PromoBanner } from "./PromoBanner";
+import FeaturedProduct from "./FeaturedProduct";
 
 const HomeView: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const HomeView: React.FC = () => {
       <TopCategories />
       <PromoBanner />
       <YourWishlist />
+      <FeaturedProduct />
     </div>
   );
 };
