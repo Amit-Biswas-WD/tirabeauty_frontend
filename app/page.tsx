@@ -4,9 +4,9 @@ import { JSX } from "react";
 import CategoryNavbar from "@/components/layout/CategoryNavbar";
 // import { HeroSection } from "@/components/layout/HeroSection";
 import Navbar from "@/components/layout/Navbar";
-import TopBar from "@/components/layout/TopBar";
 // import { TopCategories } from "@/components/layout/TopCategories";
 import HomeView from "@/components/home/HomeView";
+import TopBar from "@/components/layout/Topbar";
 
 export default function Home(): JSX.Element {
   return (
