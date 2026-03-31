@@ -17,10 +17,8 @@
 //   const [current, setCurrent] = useState(0);
 //   const [duration, setDuration] = useState(300);
 
-//   // 🔁 Hook always called (no conditional hook issue)
 //   useEffect(() => {
-//     if (!banners || banners.length === 0) return;
-//     if (!autoSlide) return;
+//     if (!banners || banners.length === 0 || !autoSlide) return;
 
 //     const interval = setInterval(() => {
 //       setDuration(300);
@@ -30,9 +28,7 @@
 //     return () => clearInterval(interval);
 //   }, [banners, autoSlide, intervalTime]);
 
-//   if (!banners || banners.length === 0) {
-//     return null;
-//   }
+//   if (!banners || banners.length === 0) return null;
 
 //   const handleClick = (index: number) => {
 //     setDuration(1000);
@@ -40,22 +36,27 @@
 //   };
 
 //   return (
-//     <div className="w-full">
-//       <div className="relative w-full h-[460px] overflow-hidden">
+//     <div className="w-full overflow-hidden">
+//       {/* Container with dynamic aspect ratio to prevent cropping */}
+//       <div className="relative w-full aspect-[16/6] sm:aspect-[21/9] md:aspect-[3/1] lg:h-[460px] overflow-hidden">
 //         <div
-//           className="flex h-full"
+//           className="flex h-full w-full"
 //           style={{
 //             transform: `translateX(-${current * 100}%)`,
 //             transition: `transform ${duration}ms ease-in-out`,
 //           }}
 //         >
 //           {banners.map((src, index) => (
-//             <div key={index} className="relative min-w-full h-full">
+//             <div
+//               key={index}
+//               className="relative min-w-full w-full h-full flex-shrink-0"
+//             >
 //               <Image
 //                 src={src}
 //                 alt={`Banner ${index + 1}`}
 //                 fill
-//                 className="object-cover"
+//                 priority={index === 0}
+//                 className="object-contain sm:object-cover"
 //                 sizes="100vw"
 //               />
 //             </div>
@@ -63,6 +64,7 @@
 //         </div>
 //       </div>
 
+//       {/* Pagination Dots */}
 //       <div className="my-4 flex justify-center gap-2">
 //         {banners.map((_, index) => (
 //           <button
@@ -81,18 +83,26 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { JSX, useEffect, useState } from "react";
 
+interface BannerItem {
+  src: string;
+  link?: string;
+}
+
 interface ReusableHeroBannerProps {
-  banners?: string[];
+  banners?: BannerItem[];
   autoSlide?: boolean;
   intervalTime?: number;
+  isSmall?: boolean;
 }
 
 export const ReusableHeroBanner = ({
   banners,
   autoSlide = true,
   intervalTime = 4000,
+  isSmall = false,
 }: ReusableHeroBannerProps): JSX.Element | null => {
   const [current, setCurrent] = useState(0);
   const [duration, setDuration] = useState(300);
@@ -115,10 +125,13 @@ export const ReusableHeroBanner = ({
     setCurrent(index);
   };
 
+  const heightClass = isSmall
+    ? "aspect-[16/4] sm:aspect-[21/6] md:aspect-[5/1] lg:h-[260px]"
+    : "aspect-[16/6] sm:aspect-[21/9] md:aspect-[3/1] lg:h-[460px]";
+
   return (
     <div className="w-full overflow-hidden">
-      {/* Container with dynamic aspect ratio to prevent cropping */}
-      <div className="relative w-full aspect-[16/6] sm:aspect-[21/9] md:aspect-[3/1] lg:h-[460px] overflow-hidden">
+      <div className={`relative w-full overflow-hidden ${heightClass}`}>
         <div
           className="flex h-full w-full"
           style={{
@@ -126,21 +139,30 @@ export const ReusableHeroBanner = ({
             transition: `transform ${duration}ms ease-in-out`,
           }}
         >
-          {banners.map((src, index) => (
-            <div
-              key={index}
-              className="relative min-w-full w-full h-full flex-shrink-0"
-            >
-              <Image
-                src={src}
-                alt={`Banner ${index + 1}`}
-                fill
-                priority={index === 0}
-                className="object-contain sm:object-cover"
-                sizes="100vw"
-              />
-            </div>
-          ))}
+          {banners.map((item, index) => {
+            const content = (
+              <div className="relative min-w-full w-full h-full flex-shrink-0">
+                <Image
+                  src={item.src}
+                  alt={`Banner ${index + 1}`}
+                  fill
+                  priority={index === 0}
+                  className="object-cover"
+                  sizes="100vw"
+                />
+              </div>
+            );
+
+            return item.link ? (
+              <Link key={index} href={item.link} className="min-w-full block">
+                {content}
+              </Link>
+            ) : (
+              <div key={index} className="min-w-full">
+                {content}
+              </div>
+            );
+          })}
         </div>
       </div>
 
