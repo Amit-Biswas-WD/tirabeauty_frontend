@@ -7,6 +7,8 @@ import FeaturedProduct from "./FeaturedProduct";
 import { NewBrandCardSection } from "./NewBrandCardSection";
 import { BrandsKnowSection } from "./BrandsKnowSection";
 import { TopShelfSection } from "./TopShelfSection";
+import { BenefitBarSection } from "./BenefitBarSection";
+import { ChatNowSection } from "./ChatNowSection";
 
 const HomeView: React.FC = () => {
   return (
@@ -19,6 +21,8 @@ const HomeView: React.FC = () => {
       <NewBrandCardSection />
       <BrandsKnowSection />
       <TopShelfSection />
+      <ChatNowSection />
+      <BenefitBarSection />
     </div>
   );
 };
