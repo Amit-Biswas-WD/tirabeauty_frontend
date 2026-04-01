@@ -254,6 +254,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { GoHeart } from "react-icons/go";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 // Constant for spacing
 const GAP = 20;
@@ -277,7 +278,7 @@ interface ReusableProps {
   headingTitle?: string;
 }
 
-// 2. Main Slider Component
+// Main Slider Component
 export default function ReusableFeaturedProducts({
   productData,
   headingTitle = "Top Categories",
@@ -286,6 +287,7 @@ export default function ReusableFeaturedProducts({
   const [visibleCards, setVisibleCards] = useState(4);
   const [cardWidth, setCardWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const updateVisibleCards = () => {
@@ -345,7 +347,8 @@ export default function ReusableFeaturedProducts({
           {productData.map((item) => (
             <div
               key={item.id}
-              className="flex-shrink-0 group relative"
+              onClick={() => router.push(`/products/${item.id}`)}
+              className="flex-shrink-0 group relative cursor-pointer"
               style={{ width: cardWidth }}
             >
               {/* Image Box */}
@@ -356,7 +359,14 @@ export default function ReusableFeaturedProducts({
                   fill
                   className="object-cover"
                 />
-                <div className="absolute top-2 right-2 bg-white p-[6px] rounded-full shadow-md cursor-pointer flex items-center justify-center z-20">
+                {/* Wishlist Button - e.stopPropagation()*/}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    console.log("Added to wishlist");
+                  }}
+                  className="absolute top-2 right-2 bg-white p-[6px] rounded-full shadow-md cursor-pointer flex items-center justify-center z-20"
+                >
                   <GoHeart size={18} className="text-[#211a1e]" />
                 </div>
               </div>
@@ -400,7 +410,13 @@ export default function ReusableFeaturedProducts({
 
                 {/* Add to Bag Button on Hover */}
                 <div className="absolute bottom-0 left-0 w-full bg-white z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-                  <button className="w-full bg-black text-white py-3 px-4 rounded-b-md font-medium text-sm hover:bg-[#333]">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log("Added to bag");
+                    }}
+                    className="w-full bg-black text-white py-3 px-4 rounded-b-md font-medium text-sm hover:bg-[#333]"
+                  >
                     Add to Bag
                   </button>
                 </div>
