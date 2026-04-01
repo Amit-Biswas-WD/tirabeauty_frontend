@@ -15,6 +15,8 @@ import { TrendingCategoriesSection } from "./TrendingCategoriesSection";
 import { DiscountImageSection } from "./DiscountImageSection";
 import { BrandToWatchSection } from "./BrandToWatchSection";
 import { OnlyTiraSection } from "./OnlyTiraSection";
+import { JustDroppedSection } from "./JustDroppedSection";
+import { HotRightNowSection } from "./HotRightNowSection";
 
 const HomeView: React.FC = () => {
   return (
@@ -30,7 +32,9 @@ const HomeView: React.FC = () => {
       <FeaturedProduct />
       <NewBrandCardSection />
       <BrandToWatchSection />
+      <HotRightNowSection />
       <BrandsKnowSection />
+      <JustDroppedSection />
       <TopShelfSection />
       <OnlyTiraSection />
       <ChatNowSection />

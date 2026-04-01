@@ -11,6 +11,7 @@ export const DiscountImageSection = () => {
           alt="Discount Banner"
           fill
           className="object-cover"
+          sizes="100vw"
         />
       </div>
     </div>

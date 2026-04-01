@@ -128,6 +128,7 @@ interface TopBanner {
   id: number;
   title: string;
   image: string;
+  category?: string;
 }
 
 export function ReusableCategoryCard({
@@ -222,9 +223,17 @@ export function ReusableCategoryCard({
                   alt={item.title}
                   fill
                   className="object-cover"
+                  sizes="100vw"
                 />
               </div>
-              <h3 className="text-sm py-3 text-start">{item.title}</h3>
+              <div className="py-3 pr-3 flex flex-col gap-1">
+                {item?.category && (
+                  <p className="text-sm text-[#211A1E] font-normal">
+                    {item.category}
+                  </p>
+                )}
+                <h3 className="text-sm text-start">{item?.title}</h3>
+              </div>
             </div>
           ))}
         </div>

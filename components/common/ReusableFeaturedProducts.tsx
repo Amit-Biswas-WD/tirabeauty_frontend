@@ -358,6 +358,7 @@ export default function ReusableFeaturedProducts({
                   alt={item.title}
                   fill
                   className="object-cover"
+                  sizes="100vw"
                 />
                 {/* Wishlist Button - e.stopPropagation()*/}
                 <div
