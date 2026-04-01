@@ -46,6 +46,7 @@ export const BenefitBarSection = () => {
                   alt={benefit.title}
                   fill
                   className="object-contain"
+                  sizes="100vw"
                 />
               </div>
 

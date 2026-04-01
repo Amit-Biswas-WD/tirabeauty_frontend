@@ -94,8 +94,8 @@ export default function FeaturedProduct() {
   return (
     <div>
       <ReusableFeaturedProducts
-        headingTitle="Top Categories"
         productData={FEATURED_PRODUCTS}
+        headingTitle="On - The - Go Minis"
       />
     </div>
   );

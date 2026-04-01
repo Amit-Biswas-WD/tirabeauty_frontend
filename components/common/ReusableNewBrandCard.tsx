@@ -98,6 +98,7 @@ export function ReusableNewBrandCard({
                   alt={item?.brand}
                   fill
                   className="object-cover"
+                  sizes="100vw"
                 />
                 <p className="backdrop-blur-md bg-white/20 shadow-lg rounded-r-full px-4 py-1.5 absolute top-3 left-0 text-[#211A1E] text-xs font-medium">
                   {item?.tagline}

@@ -27,6 +27,7 @@ export const ReusableBrandsKnowCard = ({
                 alt={brand.title}
                 fill
                 className="object-cover rounded-lg"
+                sizes="100vw"
               />
             </div>
 
