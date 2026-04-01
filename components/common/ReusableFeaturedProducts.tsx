@@ -281,7 +281,7 @@ interface ReusableProps {
 // Main Slider Component
 export default function ReusableFeaturedProducts({
   productData,
-  headingTitle = "Top Categories",
+  headingTitle = "Chosen For You",
 }: ReusableProps) {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
@@ -320,9 +320,9 @@ export default function ReusableFeaturedProducts({
   return (
     <div
       ref={containerRef}
-      className="container mx-auto text-[#211A1E] font-normal relative overflow-hidden py-6"
+      className="container mx-auto text-[#211A1E] font-normal relative overflow-hidden lg:my-8 md:my-6 sm:my-4 my-2"
     >
-      <div className="text-2xl mb-6 px-2 sm:px-0 font-medium">
+      <div className="text-2xl lg:mb-6 md:mb-5 sm:mb-4 mb-2 px-2 sm:px-0 font-medium">
         {headingTitle}
       </div>
 

@@ -9,6 +9,12 @@ import { BrandsKnowSection } from "./BrandsKnowSection";
 import { TopShelfSection } from "./TopShelfSection";
 import { BenefitBarSection } from "./BenefitBarSection";
 import { ChatNowSection } from "./ChatNowSection";
+import { ChosenProductSection } from "./ChosenProductSection";
+import { CollectionSection } from "./CollectionSection";
+import { TrendingCategoriesSection } from "./TrendingCategoriesSection";
+import { DiscountImageSection } from "./DiscountImageSection";
+import { BrandToWatchSection } from "./BrandToWatchSection";
+import { OnlyTiraSection } from "./OnlyTiraSection";
 
 const HomeView: React.FC = () => {
   return (
@@ -17,10 +23,16 @@ const HomeView: React.FC = () => {
       <TopCategories />
       <PromoBanner />
       <YourWishlist />
+      <ChosenProductSection />
+      <CollectionSection />
+      <TrendingCategoriesSection />
+      <DiscountImageSection />
       <FeaturedProduct />
       <NewBrandCardSection />
+      <BrandToWatchSection />
       <BrandsKnowSection />
       <TopShelfSection />
+      <OnlyTiraSection />
       <ChatNowSection />
       <BenefitBarSection />
     </div>
