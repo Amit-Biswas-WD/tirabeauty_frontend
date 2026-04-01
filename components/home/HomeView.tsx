@@ -6,6 +6,7 @@ import { PromoBanner } from "./PromoBanner";
 import FeaturedProduct from "./FeaturedProduct";
 import { NewBrandCardSection } from "./NewBrandCardSection";
 import { BrandsKnowSection } from "./BrandsKnowSection";
+import { TopShelfSection } from "./TopShelfSection";
 
 const HomeView: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const HomeView: React.FC = () => {
       <FeaturedProduct />
       <NewBrandCardSection />
       <BrandsKnowSection />
+      <TopShelfSection />
     </div>
   );
 };
