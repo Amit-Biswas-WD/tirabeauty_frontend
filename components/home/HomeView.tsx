@@ -4,6 +4,7 @@ import { BannerSection } from "./BannerSection";
 import { YourWishlist } from "./YourWishlist";
 import { PromoBanner } from "./PromoBanner";
 import FeaturedProduct from "./FeaturedProduct";
+import { NewBrandCardSection } from "./NewBrandCardSection";
 
 const HomeView: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const HomeView: React.FC = () => {
       <PromoBanner />
       <YourWishlist />
       <FeaturedProduct />
+      <NewBrandCardSection />
     </div>
   );
 };
