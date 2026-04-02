@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import TopBar from "@/components/layout/Topbar";
+import Navbar from "@/components/layout/Navbar";
+import CategoryNavbar from "@/components/layout/CategoryNavbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,8 +15,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+    <html lang="en" className="bg-white font-sans">
+      <div className="container mx-auto">
+        {/* Sticky Header */}
+        <div className="sticky top-0 z-50 bg-white px-4">
+          <TopBar />
+          <Navbar />
+          <CategoryNavbar />
+        </div>
+        <body className={`antialiased`}>{children}</body>
+      </div>
     </html>
   );
 }
