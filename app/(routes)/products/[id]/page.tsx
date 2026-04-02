@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { GoShareAndroid } from "react-icons/go";
+import { GoDotFill, GoShareAndroid } from "react-icons/go";
+import { FaStar } from "react-icons/fa6";
+import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
 
 const images = [
   "/images/single_product/big_image.jpg",
@@ -43,7 +45,7 @@ export default function SingleProduct() {
   };
 
   return (
-    <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 p-5">
+    <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 p-5 text-[#211A1E] font-medium">
       {/* LEFT SIDE */}
       <div className="flex gap-4 items-start">
         {/* Thumbnails */}
@@ -124,10 +126,10 @@ export default function SingleProduct() {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="absolute top-0.5 left-0.5 flex items-center gap-1.5">
-            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-[#211A1E] text-xs font-medium w-max">
+            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-xs  w-max">
               only
             </p>
-            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-[#211A1E] text-xs font-medium w-max">
+            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-xs  w-max">
               only on tira
             </p>
           </div>
@@ -136,7 +138,7 @@ export default function SingleProduct() {
 
       {/* RIGHT SIDE */}
       <div className="flex flex-col gap-3">
-        <p className="text-[10px] text-[#908C8E] font-medium uppercase">
+        <p className="text-[10px] text-[#908C8E]  uppercase">
           Home / makeup / face / blush
         </p>
         <p className="text-sm text-[#635E61] font-normal underline">
@@ -144,16 +146,37 @@ export default function SingleProduct() {
         </p>
 
         <div className="flex items-center gap-2">
-          <h1 className="text-2xl text-[#211A1E] font-medium">
+          <h1 className="text-2xl ">
             Huda Beauty Blush Filter - Toasty Peach (7.5 g)
           </h1>
-          <GoShareAndroid size={28} className="text-[#211A1E] cursor-pointer" />
+          <GoShareAndroid size={28} className="cursor-pointer" />
         </div>
 
         <div className="">
-          <div className="text-sm text-[#211A1E] font-medium flex items-center gap-1">
-            rating <span className="text-[#ce7c6d]">★</span>{" "}
-            <span className="text-[#AAAAAA]"> | review_count</span>
+          <div className="text-base flex items-center gap-1">
+            4.5
+            <span className="text-[#AAAAAA]"> /5</span>
+            <FaStar size={16} className="text-[#ce7c6d]" />
+            <p className="text-sm">42 Ratings</p>
+            <span>
+              {" "}
+              <GoDotFill size={8} />{" "}
+            </span>
+            <p className="text-sm">Rate this product</p>
+          </div>
+          <h3 className="text-2xl flex items-center gap-2">
+            ₹3,740{" "}
+            <span className="text-sm text-[#A6A3A5] font-normal">
+              Inclusive Of All Taxes
+            </span>
+          </h3>
+        </div>
+
+        <div className="">
+          <p className="text-sm">Select Shade</p>
+          <div className="flex items-center gap-2">
+            <PrimaryButton />
+            <SecondaryButton>Save to Wishlist</SecondaryButton>
           </div>
         </div>
       </div>
