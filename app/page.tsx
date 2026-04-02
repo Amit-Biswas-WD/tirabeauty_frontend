@@ -17,7 +17,7 @@ import { PromoBanner } from "@/components/home/PromoBanner";
 import { TopShelfSection } from "@/components/home/TopShelfSection";
 import { TrendingCategoriesSection } from "@/components/home/TrendingCategoriesSection";
 import { YourWishlist } from "@/components/home/YourWishlist";
-import { TopCategories } from "@/components/layout/TopCategories";
+import { TopCategories } from "@/components/home/TopCategories";
 import { JSX } from "react";
 
 export default function HomeView(): JSX.Element {

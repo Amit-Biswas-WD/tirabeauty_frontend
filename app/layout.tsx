@@ -16,15 +16,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-white font-sans">
-      <div className="container mx-auto">
-        {/* Sticky Header */}
-        <div className="sticky top-0 z-50 bg-white px-4">
-          <TopBar />
-          <Navbar />
-          <CategoryNavbar />
+      <body className={`antialiased`}>
+        <div className="container mx-auto">
+          {/* Sticky Header */}
+          <div className="sticky top-0 z-50 bg-white px-4">
+            <TopBar />
+            <Navbar />
+            <CategoryNavbar />
+          </div>
+          {children}
         </div>
-        <body className={`antialiased`}>{children}</body>
-      </div>
+      </body>
     </html>
   );
 }
