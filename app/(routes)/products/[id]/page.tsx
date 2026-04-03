@@ -4,11 +4,11 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { GoShareAndroid, GoVerified } from "react-icons/go";
-import { FaAngleRight, FaChevronDown, FaPlus, FaStar } from "react-icons/fa6";
+import { FaAngleRight, FaPlus } from "react-icons/fa6";
 import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
 import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
 import { MdLocationOn, MdOutlineDone } from "react-icons/md";
-import { BiCheck, BiChevronDown, BiX } from "react-icons/bi";
+import { BiChevronDown } from "react-icons/bi";
 import { CiStar } from "react-icons/ci";
 
 const images = [
