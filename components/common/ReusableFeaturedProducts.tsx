@@ -255,6 +255,7 @@ import { useEffect, useState, useRef } from "react";
 import { GoHeart } from "react-icons/go";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { FaStar } from "react-icons/fa6";
 
 // Constant for spacing
 const GAP = 20;
@@ -381,7 +382,8 @@ export default function ReusableFeaturedProducts({
                       : item.brand}
                   </h3>
                   <div className="text-sm text-[#211A1E] font-medium flex items-center gap-1">
-                    {item.rating} <span className="text-[#ce7c6d]">★</span>{" "}
+                    {item.rating}{" "}
+                    <FaStar size={12} className="text-[#ce7c6d]" />
                     <span className="text-[#AAAAAA]">
                       {" "}
                       | {item.review_count}
