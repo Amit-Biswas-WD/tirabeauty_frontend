@@ -1,13 +1,15 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { GoDotFill, GoShareAndroid, GoVerified } from "react-icons/go";
-import { FaAngleRight, FaPlus, FaStar } from "react-icons/fa6";
+import { GoShareAndroid, GoVerified } from "react-icons/go";
+import { FaAngleRight, FaChevronDown, FaPlus, FaStar } from "react-icons/fa6";
 import { PrimaryButton, SecondaryButton } from "@/components/ui/Button";
 import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
-import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn, MdOutlineDone } from "react-icons/md";
+import { BiCheck, BiChevronDown, BiX } from "react-icons/bi";
+import { CiStar } from "react-icons/ci";
 
 const images = [
   "/images/single_product/big_image.jpg",
@@ -22,6 +24,12 @@ const images = [
   "/images/single_product/image9.jpg",
   "/images/single_product/image10.jpg",
   "/images/single_product/image11.jpg",
+];
+
+const SHADES = [
+  { id: 1, name: "Rose Berry", color: "#D17B7B", outOfStock: false },
+  { id: 2, name: "Peach Fizz", color: "#F5978E", outOfStock: false },
+  { id: 3, name: "Soft Coral", color: "#F2808A", outOfStock: true },
 ];
 
 const THUMB_SIZE = 65;
@@ -49,6 +57,36 @@ export default function SingleProduct() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isProductDescription, setIsProductDescription] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+  // color dropdown states start here
+  const [selectedShade, setSelectedShade] = useState(SHADES[1]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const filteredShades = SHADES.filter((shade) =>
+    shade.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  const handleSelect = (shade: any) => {
+    setSelectedShade(shade);
+    setSearchTerm("");
+    setIsOpen(false);
+  };
+  // color dropdown states end here
 
   const tooltipStyle =
     "px-5 py-2.5 md:py-3.5 text-xs sm:px-8 md:px-10 md:text-base lg:px-12 font-medium rounded-md transition-all text-[#211A1E] border border-[#c7c7c7] flex items-center gap-2";
@@ -131,11 +169,11 @@ export default function SingleProduct() {
             className="object-contain "
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute top-0.5 left-0.5 flex items-center gap-1.5">
-            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-xs  w-max">
+          <div className="absolute top-0.5 left-0.5 flex items-center gap-1.5 uppercase text-xs">
+            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 w-max">
               only
             </p>
-            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 text-xs  w-max">
+            <p className="backdrop-blur-md bg-[#f6f6f6] rounded-sm px-1.5 py-1 w-max">
               only on tira
             </p>
           </div>
@@ -151,35 +189,109 @@ export default function SingleProduct() {
           Huda Beauty
         </p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between gap-2">
           <h1 className="text-2xl ">
             Huda Beauty Blush Filter - Toasty Peach (7.5 g)
           </h1>
           <GoShareAndroid size={28} className="cursor-pointer" />
         </div>
 
-        <div className="">
-          <div className="text-base flex items-center gap-1">
-            4.5
-            <span className="text-[#AAAAAA]"> /5</span>
-            <FaStar size={16} className="text-[#ce7c6d]" />
-            <p className="text-sm">42 Ratings</p>
-            <span>
-              {" "}
-              <GoDotFill size={8} />{" "}
-            </span>
-            <p className="text-sm">Rate this product</p>
+        {/* Get for  */}
+        <div className="relative">
+          <div
+            className="absolute -top-1.5 left-6 w-3 h-3 rotate-45 bg-[#e8d9c5]"
+            style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
+          />
+
+          <div className="flex items-center justify-between gap-2 bg-gradient-to-br from-[#e8d9c5] to-[#f9f6f0] p-3 rounded-sm">
+            <p className="text-lg">
+              Get for <span className="font-bold">₹3,240</span> with coupon +
+              offers
+            </p>
+            <FaAngleRight size={18} />
           </div>
-          <h3 className="text-2xl flex items-center gap-2">
-            ₹3,740{" "}
-            <span className="text-sm text-[#A6A3A5] font-normal">
-              Inclusive Of All Taxes
-            </span>
-          </h3>
         </div>
 
+        {/* color dropdown */}
+        <div className="w-full" ref={dropdownRef}>
+          <p className="text-[17px] font-medium mb-3 text-black">
+            Select Shade
+          </p>
+
+          <div className="relative border border-black p-[10px] flex items-center justify-between cursor-text">
+            <div
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center gap-3 w-full cursor-pointer"
+            >
+              <div
+                className="w-5 h-5 rounded-full shrink-0"
+                style={{ backgroundColor: selectedShade.color }}
+              ></div>
+
+              <input
+                type="text"
+                className="w-full outline-none text-[#211A1E]"
+                placeholder={selectedShade.name}
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setIsOpen(true);
+                }}
+              />
+            </div>
+            <BiChevronDown
+              className={`w-6 h-6 text-black transition-transform cursor-pointer ${isOpen ? "rotate-180" : ""}`}
+            />
+
+            {isOpen && (
+              <div className="absolute top-full left-[-1px] right-[-1px] bg-white border border-black z-10 shadow-lg">
+                {filteredShades.map((shade) => (
+                  <div
+                    key={shade.id}
+                    className={`flex items-center gap-3 p-3 cursor-pointer ${selectedShade.id === shade.id ? "bg-[#dbdadb]" : ""}`}
+                    onClick={() => handleSelect(shade)}
+                  >
+                    <div
+                      className="w-4 h-4 rounded-full"
+                      style={{ backgroundColor: shade.color }}
+                    ></div>
+                    <span className="text-[16px]">{shade.name}</span>
+                  </div>
+                ))}
+                {filteredShades.length === 0 && (
+                  <div className="p-3 text-gray-500 text-sm">
+                    No shades found
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-3 items-center mt-3">
+            {SHADES.map((shade) => {
+              const isSelected = selectedShade.id === shade.id;
+              return (
+                <div
+                  key={shade.id}
+                  onClick={() => handleSelect(shade)}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all border border-[#c9c3c3] ${isSelected ? "border border-black" : ""}`}
+                >
+                  <div
+                    className="w-[24px] h-[24px] rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: shade.color }}
+                  >
+                    {isSelected && (
+                      <MdOutlineDone className="text-white" size={20} />
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* button */}
         <div className="">
-          <p className="text-sm">Select Shade</p>
           <div className="flex items-center gap-2">
             <PrimaryButton />
             <SecondaryButton>Save to Wishlist</SecondaryButton>
@@ -341,6 +453,17 @@ export default function SingleProduct() {
             RELIANCE RETAIL LIMITED
           </span>
         </p>
+
+        <p className="text-sm px-3 py-[18px] bg-[#fcf2ef] rounded-sm flex items-center justify-between gap-2">
+          Rate this product
+          <span className="ml-2 text-[#dfa89e] flex items-center gap-0.5">
+            <CiStar size={30} />
+            <CiStar size={30} />
+            <CiStar size={30} />
+            <CiStar size={30} />
+            <CiStar size={30} />
+          </span>
+        </p>
       </div>
     </div>
   );
@@ -356,7 +479,6 @@ export const TooltipSection: React.FC<TooltipSectionProps> = ({
   className,
 }) => {
   return (
-    // className ekhane add kora hoyeche jate alignment change kora jay
     <div
       className={`absolute top-full mt-1 hidden group-hover:block z-50 w-[300px] sm:w-[400px] md:w-[496px] ${className ? className : "left-0"}`}
     >
