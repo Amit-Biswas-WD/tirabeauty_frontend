@@ -20,42 +20,33 @@ const subCategories: Record<string, SubCategoryGroup[]> = {
   Makeup: [
     {
       heading: "Face",
-      items: [
-        "Blush",
-        "Bronzer",
-        "Compact",
-        "Eye Makeup Remover",
-        "Eyebrow Enhancer",
-        "False Eyelashes",
-      ],
+      items: ["Blush", "Bronzer", "Compact"],
     },
     {
       heading: "Eye",
-      items: ["Eye Shadow", "Eyeliner", "Mascara", "Eye Primer"],
+      items: ["Eye Shadow", "Eyeliner", "Mascara"],
     },
     {
       heading: "Lip",
-      items: [
-        "Lip Balm",
-        "Lip Crayon",
-        "Lip Gloss",
-        "Lip Liner",
-        "Lip Plumper",
-      ],
+      items: ["Lip Balm", "Lip Crayon", "Lip Gloss"],
     },
   ],
   Skin: [
     {
       heading: "Cleansers & Exfoliators",
-      items: ["Face Washes & Cleansers", "Scrubs & Exfoliators"],
+      items: [
+        "Face Washes & Cleansers",
+        "Scrubs & Exfoliators",
+        "Makeup Removers",
+      ],
     },
     {
       heading: "Lip Care",
-      items: ["Lip Balm", "Lip Scrub"],
+      items: ["Lip Balm", "Lip Scrub", "Lip Masks"],
     },
     {
       heading: "Toners & Mist",
-      items: ["Toner", "Mist"],
+      items: ["Toner", "Mist", "Essence"],
     },
   ],
   Hair: [
