@@ -94,7 +94,7 @@ export const ProductCategory = () => {
     <div>
       <ReusableFeaturedProducts
         productData={chosenProduct}
-        headingTitle="Chosen For You"
+        headingTitle="More Like This"
       />
     </div>
   );
