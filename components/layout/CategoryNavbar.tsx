@@ -4,19 +4,105 @@ import Link from "next/link";
 import { JSX, useState, useRef } from "react";
 
 const categories = [
-  { id: 2, label: "Makeup", href: "/makeup" },
-  { id: 3, label: "Skin", href: "/skin" },
-  { id: 4, label: "Hair", href: "/hair" },
-  { id: 6, label: "Men", href: "/men" },
-  { id: 7, label: "Bath & Body", href: "/bath-body" },
+  { id: 2, label: "Makeup", href: "/sections/makeup" },
+  { id: 3, label: "Skin", href: "/sections/skin" },
+  { id: 4, label: "Hair", href: "/sections/hair" },
+  { id: 6, label: "Men", href: "/sections/men" },
+  { id: 7, label: "Bath & Body", href: "/sections/bath-body" },
 ];
 
-const subCategories: Record<string, string[]> = {
-  Makeup: ["Face", "Eyes", "Lips", "Nails"],
-  Skin: ["Cleanser", "Moisturizer", "Serum"],
-  Hair: ["Shampoo", "Conditioner", "Hair Oil"],
-  Men: ["Beard Care", "Shaving", "Body Spray", "Face Wash"],
-  "Bath & Body": ["Body Wash", "Scrubs", "Lotions", "Hand Care"],
+type SubCategoryGroup = {
+  heading: string;
+  items: string[];
+};
+
+const subCategories: Record<string, SubCategoryGroup[]> = {
+  Makeup: [
+    {
+      heading: "Face",
+      items: ["Blush", "Bronzer", "Compact"],
+    },
+    {
+      heading: "Eye",
+      items: ["Eye Shadow", "Eyeliner", "Mascara"],
+    },
+    {
+      heading: "Lip",
+      items: ["Lip Balm", "Lip Crayon", "Lip Gloss"],
+    },
+  ],
+  Skin: [
+    {
+      heading: "Cleansers & Exfoliators",
+      items: [
+        "Face Washes & Cleansers",
+        "Scrubs & Exfoliators",
+        "Makeup Removers",
+      ],
+    },
+    {
+      heading: "Lip Care",
+      items: ["Lip Balm", "Lip Scrub", "Lip Masks"],
+    },
+    {
+      heading: "Toners & Mist",
+      items: ["Toner", "Mist", "Essence"],
+    },
+  ],
+  Hair: [
+    {
+      heading: "Hair Care",
+      items: ["Conditioner", "Dry Shampoo", "Hair Oil"],
+    },
+    {
+      heading: "Hair Styling",
+      items: ["Hair Gels & Waxes", "Hair Sprays & Mists", "Hair Colour"],
+    },
+    {
+      heading: "Shop By",
+      items: ["What's New", "Bestsellers", "Minis"],
+    },
+  ],
+  Men: [
+    {
+      heading: "Beard Care",
+      items: ["Beard & Moustache Oil", "Beard Wax & Softeners", "Beard Comb"],
+    },
+    {
+      heading: "Hair Care",
+      items: ["Shampoo", "Conditioner", "Hair Oil"],
+    },
+    {
+      heading: "Fragrance",
+      items: [
+        "Perfume (EDT & EDP)",
+        "Deodorants & Roll-Ons",
+        "Body Mists & Sprays",
+      ],
+    },
+  ],
+  "Bath & Body": [
+    {
+      heading: "Bath & Shower",
+      items: [
+        "Bath Salts",
+        "Body Scrubs & Exfoliants",
+        "Body Washes & Shower Gels",
+      ],
+    },
+    {
+      heading: "Hands & Feet",
+      items: ["Hand Wash", "Hand Creams & Masks", "Foot Care"],
+    },
+    {
+      heading: "Shaving & Hair Removal",
+      items: [
+        "Body Razors & Cartridges",
+        "Face & Eyebrow Razors",
+        "Epilators & Trimmers",
+      ],
+    },
+  ],
 };
 
 const CategoryNavbar = (): JSX.Element => {
@@ -31,7 +117,7 @@ const CategoryNavbar = (): JSX.Element => {
   const handleLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActive(null);
-    }, 500);
+    }, 300);
   };
 
   return (
@@ -55,21 +141,31 @@ const CategoryNavbar = (): JSX.Element => {
       </div>
 
       {/* Dropdown */}
-      {active && (
+      {active && subCategories[active] && (
         <div
-          className="absolute left-0 top-full w-full bg-white shadow-lg z-50 border mt-2"
+          className="absolute left-0 top-full w-full bg-white shadow-lg z-50 border-t border-gray-200 mt-0"
           onMouseEnter={() => handleEnter(active)}
           onMouseLeave={handleLeave}
         >
-          <div className="max-w-7xl mx-auto p-6 grid grid-cols-4 gap-4">
-            {subCategories[active]?.map((item, index) => (
-              <Link
-                key={index}
-                href="#"
-                className="text-sm text-gray-700 hover:text-[#F00000]"
-              >
-                {item}
-              </Link>
+          <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-3 gap-8">
+            {subCategories[active].map((group, groupIndex) => (
+              <div key={groupIndex}>
+                <h4 className="text-sm font-semibold text-[#211A1E] mb-3 border-b border-gray-100 pb-2">
+                  {group.heading}
+                </h4>
+                <ul className="space-y-2">
+                  {group.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                      <Link
+                        href="#"
+                        className="text-sm text-gray-600 hover:text-[#F00000] transition-colors duration-150"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>

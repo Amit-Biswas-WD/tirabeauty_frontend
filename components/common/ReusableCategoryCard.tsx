@@ -112,6 +112,7 @@
 // }
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
@@ -129,6 +130,7 @@ interface TopBanner {
   title: string;
   image: string;
   category?: string;
+  link?: string;
 }
 
 export function ReusableCategoryCard({
@@ -214,18 +216,36 @@ export function ReusableCategoryCard({
               className="flex-shrink-0"
               style={{ width: cardWidth }}
             >
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ height: `${height}px` }}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                />
-              </div>
+              {item.link ? (
+                <Link href={item.link}>
+                  <div
+                    className="relative w-full overflow-hidden"
+                    style={{ height: `${height}px` }}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ height: `${height}px` }}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                  />
+                </div>
+              )}
+
               <div className="py-3 pr-3 flex flex-col gap-1">
                 {item?.category && (
                   <p className="text-sm text-[#211A1E] font-normal">
