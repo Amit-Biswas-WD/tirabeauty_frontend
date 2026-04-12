@@ -4,11 +4,11 @@ import Link from "next/link";
 import { JSX, useState, useRef } from "react";
 
 const categories = [
-  { id: 2, label: "Makeup", href: "/makeup" },
-  { id: 3, label: "Skin", href: "/skin" },
-  { id: 4, label: "Hair", href: "/hair" },
-  { id: 6, label: "Men", href: "/men" },
-  { id: 7, label: "Bath & Body", href: "/bath-body" },
+  { id: 2, label: "Makeup", href: "/sections/makeup" },
+  { id: 3, label: "Skin", href: "/sections/skin" },
+  { id: 4, label: "Hair", href: "/sections/hair" },
+  { id: 6, label: "Men", href: "/sections/men" },
+  { id: 7, label: "Bath & Body", href: "/sections/bath-body" },
 ];
 
 type SubCategoryGroup = {
