@@ -1,15 +1,15 @@
 "use client";
 
-import { ManProductCard } from "@/components/section_category/men/ManProductCard";
-import { MenBanner } from "@/components/section_category/men/MenBanner";
-import { MenTopCategories } from "@/components/section_category/men/MenTopCategories";
+import { ManProductCard } from "@/components/section_category/man/ManProductCard";
+import { MenBanner } from "@/components/section_category/man/MenBanner";
+import { MenTopCategories } from "@/components/section_category/man/MenTopCategories";
 
 export default function MenPage() {
   return (
     <div>
       <MenBanner />
       <MenTopCategories />
-      <ManProductCard/>
+      <ManProductCard />
     </div>
   );
 }

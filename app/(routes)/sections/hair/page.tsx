@@ -1,5 +1,6 @@
 "use client";
 
+import { HairArticle } from "@/components/section_category/hair/HairArticle";
 import { HairBanner } from "@/components/section_category/hair/HairBanner";
 import { HairProductCard } from "@/components/section_category/hair/HairProductCard";
 import { HairTopCategories } from "@/components/section_category/hair/HairTopCategories";
@@ -9,7 +10,8 @@ export default function HairPage() {
     <div>
       <HairBanner />
       <HairTopCategories />
-      <HairProductCard/>
+      <HairProductCard />
+      <HairArticle />
     </div>
   );
 }
