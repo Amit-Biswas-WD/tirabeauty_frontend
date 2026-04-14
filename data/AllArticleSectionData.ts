@@ -162,4 +162,44 @@ export const AllArticleSectionData: Record<string, ProductItem[]> = {
       link: "/article/article",
     },
   ],
+  bath_body: [
+    {
+      id: 1,
+      category: "BATH & BODY",
+      title:
+        "A step-by-step bodycare guide to refresh your skin after every workout",
+      image: "/images/section/bath_body/a_img1.webp",
+      link: "/article/article",
+    },
+    {
+      id: 2,
+      category: "BATH & BODY",
+      title:
+        "Bodycare essentials that leave you smelling like your favourite dessert",
+      image: "/images/section/bath_body/a_img2.webp",
+      link: "/article/article",
+    },
+    {
+      id: 3,
+      category: "BATH & BODY",
+      title: "7 bodycare products team Tira is obsessed with rn",
+      image: "/images/section/bath_body/a_img3.webp",
+      link: "/article/article",
+    },
+    {
+      id: 4,
+      category: "BATH & BODY",
+      title: "8 best bodycare kits for an all-in-one routine",
+      image: "/images/section/bath_body/a_img4.jpg",
+      link: "/article/article",
+    },
+    {
+      id: 5,
+      category: "BATH & BODY | FRAGRANCE",
+      title:
+        "8 fragrant body lotions and butters to layer under your fragrance",
+      image: "/images/section/bath_body/a_img5.jpg",
+      link: "/article/article",
+    },
+  ],
 };

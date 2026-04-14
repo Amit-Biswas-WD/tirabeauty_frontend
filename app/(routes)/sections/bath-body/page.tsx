@@ -1,5 +1,6 @@
 import { BathBodyBanner } from "@/components/section_category/bath_body/BathBodyBanner";
 import { BathBodyTopCategories } from "@/components/section_category/bath_body/BathBodyTopCategories";
+import { BothBodyArticle } from "@/components/section_category/bath_body/BothBodyArticle";
 import { BothBodyProductCard } from "@/components/section_category/bath_body/BothBodyProductCard";
 
 export default function BathBodyPage() {
@@ -7,7 +8,8 @@ export default function BathBodyPage() {
     <div>
       <BathBodyBanner />
       <BathBodyTopCategories />
-      <BothBodyProductCard/>
+      <BothBodyProductCard />
+      <BothBodyArticle />
     </div>
   );
 }
