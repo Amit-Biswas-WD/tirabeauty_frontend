@@ -7,7 +7,7 @@ export const ManProductCard = () => {
   return (
   <ReusableFeaturedProducts
          productData={AllProductData.man}
-         headingTitle="Chosen For You"
+         headingTitle="Man Finds For You"
        />
   )
 }

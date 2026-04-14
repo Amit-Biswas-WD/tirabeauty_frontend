@@ -7,7 +7,7 @@ export const SkinProductCard = () => {
   return (
   <ReusableFeaturedProducts
          productData={AllProductData.skin}
-         headingTitle="Chosen For You"
+         headingTitle="Skincare Finds For You"
        />
   )
 }
