@@ -1,6 +1,7 @@
 "use client";
 
 import { MakeUpBanner } from "@/components/section_category/makeup/MakeUpBanner";
+import { MakeUpBeautyOffer } from "@/components/section_category/makeup/MakeUpBeautyOffer";
 import { MakeupProductCard } from "@/components/section_category/makeup/MakeupProductCard";
 import { MakeUpTopCategories } from "@/components/section_category/makeup/MakeUpTopCategories";
 
@@ -10,6 +11,7 @@ export default function MakeupPage() {
       <MakeUpBanner />
       <MakeUpTopCategories />
       <MakeupProductCard/>
+      <MakeUpBeautyOffer/>
     </div>
   );
 }

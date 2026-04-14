@@ -403,7 +403,7 @@ export const AllProductData: Record<string, ProductItem[]> = {
       id: 2,
       brand: "Dream. Immerse. Play.",
       title: "Dream. Immerse. Play. Shower Gel The Island Drift Collection",
-      image: "/images/section/bath_body/p_img2.jpg",
+      image: "/images/section/bath_body/p_img2.png",
       category: "bath_body",
       price: 346,
       regularPrice: 495,
