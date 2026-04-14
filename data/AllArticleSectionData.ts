@@ -125,4 +125,41 @@ export const AllArticleSectionData: Record<string, ProductItem[]> = {
       link: "/article/article",
     },
   ],
+  man: [
+    {
+      id: 1,
+      category: "MEN | SKIN",
+      title: "8 skincare essentials for men that Team Tira swears by",
+      image: "/images/section/man/a_img1.webp",
+      link: "/article/article",
+    },
+    {
+      id: 2,
+      category: "MEN",
+      title: "8 grooming essentials that every man needs this summer",
+      image: "/images/section/man/a_img2.jpg",
+      link: "/article/article",
+    },
+    {
+      id: 3,
+      category: "FRAGRANCE | MEN",
+      title: "Not your average guy's scent: 8 most unique perfumes for men",
+      image: "/images/section/man/a_img3.webp",
+      link: "/article/article",
+    },
+    {
+      id: 4,
+      category: "SKIN",
+      title: "7 K-beauty essentials that every man needs on his skincare shelf",
+      image: "/images/section/man/a_img4.jpeg",
+      link: "/article/article",
+    },
+    {
+      id: 5,
+      category: "MEN | SKIN",
+      title: "9 skincare products that he will actually use (and love)",
+      image: "/images/section/man/a_img5.webp",
+      link: "/article/article",
+    },
+  ],
 };
