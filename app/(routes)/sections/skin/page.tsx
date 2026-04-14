@@ -1,5 +1,6 @@
 "use client";
 
+import { SkinArticle } from "@/components/section_category/skin/SkinArticle";
 import { SkinBanner } from "@/components/section_category/skin/SkinBanner";
 import { SkinProductCard } from "@/components/section_category/skin/SkinProductCard";
 import { SkinTopCategories } from "@/components/section_category/skin/SkinTopCategories";
@@ -9,7 +10,8 @@ export default function SkinPage() {
     <div>
       <SkinBanner />
       <SkinTopCategories />
-      <SkinProductCard/>
+      <SkinProductCard />
+      <SkinArticle />
     </div>
   );
 }

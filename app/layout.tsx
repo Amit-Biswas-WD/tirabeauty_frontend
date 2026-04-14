@@ -3,6 +3,8 @@ import "./globals.css";
 import TopBar from "@/components/layout/Topbar";
 import Navbar from "@/components/layout/Navbar";
 import CategoryNavbar from "@/components/layout/CategoryNavbar";
+import { BenefitBarSection } from "@/components/home/BenefitBarSection";
+import { ChatNowSection } from "@/components/home/ChatNowSection";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,6 +27,8 @@ export default function RootLayout({
             <CategoryNavbar />
           </div>
           {children}
+          <ChatNowSection />
+          <BenefitBarSection />
         </div>
       </body>
     </html>

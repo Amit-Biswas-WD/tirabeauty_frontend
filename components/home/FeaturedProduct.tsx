@@ -90,7 +90,7 @@ const FEATURED_PRODUCTS = [
   },
 ];
 
-export default function FeaturedProduct() {
+export const FeaturedProduct = () => {
   return (
     <div>
       <ReusableFeaturedProducts
@@ -99,4 +99,4 @@ export default function FeaturedProduct() {
       />
     </div>
   );
-}
+};
