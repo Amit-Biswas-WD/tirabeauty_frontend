@@ -20,7 +20,7 @@ export const AllBrandCollection: Record<string, ProductItem[]> = {
     {
       id: 1,
       title: "Min 15% off + free lipstick over 1499+",
-      image: "/images/section/makeup/b_img.jpeg",
+      image: "/images/section/makeup/b_img2.jpeg",
       description: ""
     },
     {
@@ -43,4 +43,5 @@ export const AllBrandCollection: Record<string, ProductItem[]> = {
     },
    
   ],
+  
 };
