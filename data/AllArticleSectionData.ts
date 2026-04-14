@@ -51,4 +51,41 @@ export const AllArticleSectionData: Record<string, ProductItem[]> = {
       link: "/article/article",
     },
   ],
+  skin: [
+    {
+      id: 1,
+      category: "MAKEUP",
+      title: "6 blushes to help you recreate the blush draping trend",
+      image: "/images/section/skin/a_img1.webp",
+      link: "/article/article",
+    },
+    {
+      id: 2,
+      category: "MAKEUP",
+      title: "7 plum lipsticks for every kind of lip moment",
+      image: "/images/section/skin/a_img2.jpg",
+      link: "/article/article",
+    },
+    {
+      id: 3,
+      category: "MAKEUP | HAIR | SKIN",
+      title: "8 beauty launches in March that are on our radar RN",
+      image: "/images/section/skin/a_img3.jpg",
+      link: "/article/article",
+    },
+    {
+      id: 4,
+      category: "MAKEUP",
+      title: "You haven’t been taking your makeup off properly",
+      image: "/images/section/skin/a_img4.jpg",
+      link: "/article/article",
+    },
+    {
+      id: 5,
+      category: "MAKEUP | SKIN",
+      title: "Beauty trends to recreate according to your zodiac sign",
+      image: "/images/section/skin/a_img5.jpg",
+      link: "/article/article",
+    },
+  ],
 };
