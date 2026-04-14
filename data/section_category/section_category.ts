@@ -24,9 +24,9 @@ export const sectionCategoryData: Record<string, BannerItem[]> = {
     { src: "/images/section/hair/img4.jpeg", link: "/shop/hair" },
   ],
   men: [
-    { src: "/images/section/men/img1.jpeg", link: "/shop/men" },
-    { src: "/images/section/men/img2.jpeg", link: "/shop/men" },
-    { src: "/images/section/men/img3.jpeg", link: "/shop/men" },
+    { src: "/images/section/man/img1.jpeg", link: "/shop/man" },
+    { src: "/images/section/man/img2.jpeg", link: "/shop/man" },
+    { src: "/images/section/man/img3.jpeg", link: "/shop/man" },
   ],
   bath_body: [
     { src: "/images/section/bath_body/img1.webp", link: "/shop/bath-body" },
