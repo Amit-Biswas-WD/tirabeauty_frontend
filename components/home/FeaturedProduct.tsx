@@ -2,7 +2,7 @@
 
 import ReusableFeaturedProducts from "../common/ReusableFeaturedProducts";
 
-const FEATURED_PRODUCTS = [
+export const FEATURED_PRODUCTS = [
   {
     id: 1,
     brand: "Beauty of Joseon Glowing",
