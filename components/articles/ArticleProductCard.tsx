@@ -30,7 +30,7 @@ export const ArticleProductCard = () => {
         </div>
 
         <p className="text-xl font-semibold flex items-center gap-2 mt-4 cursor-pointer">
-          Add to Cart <BiChevronRight className="w-6 h-6 text-black" />
+          Add to Cart <BiChevronRight className="w-6 h-6" />
         </p>
       </div>
     </div>
