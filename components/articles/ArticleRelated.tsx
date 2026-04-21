@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { GoArrowRight } from "react-icons/go";
 
-// Key er type definition
+// Key er type defin ition
 interface Article {
   category: string;
   title: string;
@@ -67,6 +67,10 @@ export const ArticleRelated = () => {
                   <span>{item.date}</span>
                 </div>
 
+                {/* Arrow Button */}
+                <button className="mt-2 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
+                  <GoArrowRight size={16} />
+                </button>
                 {/* Arrow Button */}
                 <button className="mt-2 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
                   <GoArrowRight size={16} />
