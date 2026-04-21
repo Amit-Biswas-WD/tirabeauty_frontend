@@ -71,10 +71,6 @@ export const ArticleRelated = () => {
                 <button className="mt-2 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
                   <GoArrowRight size={16} />
                 </button>
-                {/* Arrow Button */}
-                <button className="mt-2 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
-                  <GoArrowRight size={16} />
-                </button>
               </div>
             </div>
           ))}
