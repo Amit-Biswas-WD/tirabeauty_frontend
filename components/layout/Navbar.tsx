@@ -9,7 +9,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
 import { LiaUserCircle } from "react-icons/lia";
 
-const Navbar: React.FC = () => {
+export const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -136,5 +136,3 @@ const Navbar: React.FC = () => {
     </>
   );
 };
-
-export default Navbar;

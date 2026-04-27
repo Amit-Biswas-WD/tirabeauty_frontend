@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { JSX } from "react";
 
-const TopBar = (): JSX.Element => {
+export const TopBar = () => {
   return (
     <section className="hidden lg:block">
       <div className="flex items-center justify-end gap-2 my-2 xl:mx-10 mx-0 text-xs">
@@ -14,5 +13,3 @@ const TopBar = (): JSX.Element => {
     </section>
   );
 };
-
-export default TopBar;

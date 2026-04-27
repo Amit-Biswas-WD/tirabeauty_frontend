@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import TopBar from "@/components/layout/Topbar";
-import Navbar from "@/components/layout/Navbar";
-import CategoryNavbar from "@/components/layout/CategoryNavbar";
 import { BenefitBarSection } from "@/components/home/BenefitBarSection";
 import { ChatNowSection } from "@/components/home/ChatNowSection";
+import { Navbar } from "@/components/layout/Navbar";
+import { CategoryNavbar } from "@/components/layout/CategoryNavbar";
+import { TopBar } from "@/components/layout/Topbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",

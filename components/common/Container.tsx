@@ -6,11 +6,7 @@ type ContainerProps = {
   className?: string;
 };
 
-// Functional component
-export const Container: React.FC<ContainerProps> = ({
-  children,
-  className = "",
-}) => {
+export const Container = ({ children, className = "" }: ContainerProps) => {
   return (
     <div className={`container mx-auto md:my-10 sm:my-8 my-6 ${className}`}>
       {children}

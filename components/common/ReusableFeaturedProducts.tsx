@@ -280,10 +280,10 @@ interface ReusableProps {
 }
 
 // Main Slider Component
-export default function ReusableFeaturedProducts({
+export const ReusableFeaturedProducts = ({
   productData,
   headingTitle = "Chosen For You",
-}: ReusableProps) {
+}: ReusableProps) => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
   const [cardWidth, setCardWidth] = useState(0);
@@ -440,4 +440,4 @@ export default function ReusableFeaturedProducts({
       </button>
     </div>
   );
-}
+};

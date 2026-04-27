@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CheckBox } from "@/components/ui/CheckBox";
 import { FilterGroup } from "@/components/ui/FilterGroup";
 import { FEATURED_PRODUCTS } from "@/components/home/FeaturedProduct";
-import ReusableProductCard from "@/components/common/ReusableProductCard";
+import { ReusableProductCard } from "@/components/common/ReusableProductCard";
 
 export default function CollectionPage() {
   const [filters, setFilters] = useState({

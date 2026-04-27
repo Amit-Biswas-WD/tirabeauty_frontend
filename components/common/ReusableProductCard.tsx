@@ -24,10 +24,10 @@ interface ReusableProps {
   headingTitle?: string;
 }
 
-export default function ReusableProductCard({
+export const ReusableProductCard = ({
   productData,
   headingTitle = "Chosen For You",
-}: ReusableProps) {
+}: ReusableProps) => {
   const router = useRouter();
 
   return (
@@ -116,4 +116,4 @@ export default function ReusableProductCard({
       </div>
     </div>
   );
-}
+};

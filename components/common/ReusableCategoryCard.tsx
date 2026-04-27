@@ -166,7 +166,6 @@
 //   );
 // }
 
-
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -190,7 +189,7 @@ interface TopBanner {
   description?: string;
 }
 
-export function ReusableCategoryCard({
+export const ReusableCategoryCard = ({
   topBanner,
   headingTitle = "Top Categories",
   responsive = { xl: 6, lg: 5, md: 4, sm: 2 },
@@ -200,13 +199,15 @@ export function ReusableCategoryCard({
   headingTitle?: string;
   responsive?: ResponsiveCards;
   height?: number | string;
-}) {
+}) => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(responsive.lg || 5);
   const [cardWidth, setCardWidth] = useState(0);
 
   const isTailwind = typeof height === "string" && height.includes(":");
-  const finalStyle = !isTailwind ? { height: typeof height === "number" ? `${height}px` : height } : {};
+  const finalStyle = !isTailwind
+    ? { height: typeof height === "number" ? `${height}px` : height }
+    : {};
   const finalClass = isTailwind ? height : "";
 
   useEffect(() => {
@@ -334,4 +335,4 @@ export function ReusableCategoryCard({
       </button>
     </div>
   );
-}
+};

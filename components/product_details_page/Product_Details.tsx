@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { GoShareAndroid, GoVerified } from "react-icons/go";
 import { FaAngleRight, FaPlus } from "react-icons/fa6";

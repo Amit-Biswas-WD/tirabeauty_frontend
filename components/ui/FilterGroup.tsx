@@ -9,11 +9,11 @@ interface FilterGroupProps {
   isOpenDefault?: boolean;
 }
 
-export function FilterGroup({
+export const FilterGroup = ({
   title,
   children,
   isOpenDefault = false,
-}: FilterGroupProps) {
+}: FilterGroupProps) => {
   const [isOpen, setIsOpen] = useState(isOpenDefault);
 
   return (
@@ -46,4 +46,4 @@ export function FilterGroup({
       </div>
     </div>
   );
-}
+};
