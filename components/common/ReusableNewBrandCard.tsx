@@ -19,10 +19,10 @@ interface ReusableNewBrandCardProps {
   headingTitle?: string;
 }
 
-export function ReusableNewBrandCard({
+export const ReusableNewBrandCard = ({
   cardData,
   headingTitle = "Top Categories",
-}: ReusableNewBrandCardProps) {
+}: ReusableNewBrandCardProps) => {
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(5);
   const [cardWidth, setCardWidth] = useState(0);
@@ -132,4 +132,4 @@ export function ReusableNewBrandCard({
       </button>
     </div>
   );
-}
+};

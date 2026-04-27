@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { JSX, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 const categories = [
   { id: 2, label: "Makeup", href: "/sections/makeup" },
@@ -105,7 +105,7 @@ const subCategories: Record<string, SubCategoryGroup[]> = {
   ],
 };
 
-const CategoryNavbar = (): JSX.Element => {
+export const CategoryNavbar = () => {
   const [active, setActive] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -173,5 +173,3 @@ const CategoryNavbar = (): JSX.Element => {
     </nav>
   );
 };
-
-export default CategoryNavbar;

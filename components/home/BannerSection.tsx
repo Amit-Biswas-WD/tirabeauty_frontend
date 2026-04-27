@@ -26,7 +26,7 @@ const bannerData = [
   },
 ];
 
-export function BannerSection() {
+export const BannerSection = () => {
   // return <ReusableHeroBanner banners={banners} />;
   return <ReusableHeroBanner banners={bannerData} />;
-}
+};

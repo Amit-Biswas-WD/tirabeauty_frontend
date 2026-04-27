@@ -1,7 +1,7 @@
 import { AllCategoryData } from "@/data/AllCategoryData";
 import { ReusableCategoryCard } from "../common/ReusableCategoryCard";
 
-export function YourWishlist() {
+export const YourWishlist = () => {
   return (
     <ReusableCategoryCard
       headingTitle="For Your Wishlist"
@@ -10,4 +10,4 @@ export function YourWishlist() {
       height={210}
     />
   );
-}
+};

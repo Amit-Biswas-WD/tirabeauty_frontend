@@ -1,6 +1,6 @@
 "use client";
 
-import ReusableFeaturedProducts from "../common/ReusableFeaturedProducts";
+import { ReusableFeaturedProducts } from "../common/ReusableFeaturedProducts";
 
 export const FEATURED_PRODUCTS = [
   {

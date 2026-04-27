@@ -1,6 +1,6 @@
 "use client";
 
-import ReusableFeaturedProducts from "../common/ReusableFeaturedProducts";
+import { ReusableFeaturedProducts } from "../common/ReusableFeaturedProducts";
 
 const chosenProduct = [
   {
