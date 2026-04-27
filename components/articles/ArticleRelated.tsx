@@ -36,12 +36,12 @@ const products: Article[] = [
 
 export const ArticleRelated = () => {
   return (
-    <section className="bg-[#fff7f5] py-12 w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] +mr-[50vw]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="bg-[#fff7f5] md:py-12 py-10 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="container mx-auto px-4">
         <h2 className="text-2xl font-medium mb-8 text-[#1a1a1a]">
           Related Articles
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((item, index) => (
             <div key={index} className="flex gap-4 items-start">
               {/* Image Section */}
@@ -57,10 +57,10 @@ export const ArticleRelated = () => {
 
               {/* Content Section */}
               <div className="flex flex-col gap-2 font-normal text-[#211A1E]">
-                <span className="text-[12px] tracking-wider">
+                <span className="md:text-[12px] text-[10px] tracking-wider">
                   {item.category}
                 </span>
-                <h3 className="text-[16px]">{item.title}</h3>
+                <h3 className="md:text-[16px] text-[14px]">{item.title}</h3>
                 <div className="flex items-center gap-2 text-[11px] text-[#908C8E] uppercase">
                   <span>{item.read_time}</span>
                   <span>•</span>
@@ -68,7 +68,7 @@ export const ArticleRelated = () => {
                 </div>
 
                 {/* Arrow Button */}
-                <button className="mt-2 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
+                <button className="md:mt-2 mt-0.5 w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
                   <GoArrowRight size={16} />
                 </button>
               </div>
