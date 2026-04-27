@@ -5,7 +5,7 @@ import { BiChevronRight } from "react-icons/bi";
 
 export const ArticleProductCard = () => {
   return (
-    <div className="flex items-stretch gap-8 w-1150px mx-auto px-4 mb-16">
+    <div className="flex items-stretch gap-8 w-1150px mx-auto px-4 lg:my-16 md:my-12 my-10">
       <div className="relative h-[180px] w-[180px] flex-shrink-0 border border-[#f4e1dd]">
         <Image
           src="/images/article/a_product_image.avif"
