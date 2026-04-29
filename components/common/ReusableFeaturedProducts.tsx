@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
-import { GoHeart } from "react-icons/go";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { GoHeart } from "react-icons/go";
 import { FaStar } from "react-icons/fa6";
 import { SectionTitle } from "../ui/SectionTitle";
+import { SliderButtons } from "./SliderButtons";
+import { useSlider } from "@/hooks/useSlider";
 
-// Constant for spacing
-const GAP = 20;
-
-// Types for better safety
 interface Product {
   id: number;
   brand: string;
@@ -30,68 +26,43 @@ interface ReusableProps {
   headingTitle?: string;
 }
 
-// Main Slider Component
 export const ReusableFeaturedProducts = ({
   productData,
   headingTitle = "Chosen For You",
 }: ReusableProps) => {
-  const [index, setIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(4);
-  const [cardWidth, setCardWidth] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const updateVisibleCards = () => {
-      const w = window.innerWidth;
-      let cards = 4;
-      if (w >= 1024) cards = 4;
-      else if (w >= 768) cards = 3;
-      else cards = 1.5;
-
-      setVisibleCards(cards);
-
-      if (containerRef.current) {
-        const width = containerRef.current.offsetWidth;
-        const totalGap = (Math.ceil(cards) - 1) * GAP;
-        setCardWidth((width - totalGap) / cards);
-      }
-    };
-
-    updateVisibleCards();
-    window.addEventListener("resize", updateVisibleCards);
-    return () => window.removeEventListener("resize", updateVisibleCards);
-  }, [productData]);
-
-  const maxIndex = Math.max(0, productData.length - Math.floor(visibleCards));
-
-  const handleNext = () =>
-    setIndex((prev) => (prev >= maxIndex ? prev : prev + 1));
-  const handlePrev = () => setIndex((prev) => (prev <= 0 ? prev : prev - 1));
+  const {
+    containerRef,
+    index,
+    handleNext,
+    handlePrev,
+    maxIndex,
+    cardWidth,
+    gap,
+  } = useSlider({
+    dataLength: productData.length,
+    variant: "product",
+    gap: 20,
+  });
 
   return (
-    <div
-      ref={containerRef}
-      className="section-spacing container mx-auto text-[#211A1E] font-normal relative overflow-hidden"
-    >
+    <div className="section-spacing container mx-auto text-[#211A1E] font-normal relative overflow-hidden">
       <SectionTitle>{headingTitle}</SectionTitle>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={handlePrev}
-        className={`absolute left-2 sm:left-4 top-[40%] -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-1 border border-gray-200 transition-opacity duration-200 ${
-          index <= 0 ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <MdKeyboardArrowLeft className="text-3xl" />
-      </button>
+      <SliderButtons
+        onPrev={handlePrev}
+        onNext={handleNext}
+        isFirst={index <= 0}
+        isLast={index >= maxIndex}
+      />
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden" ref={containerRef}>
         <div
           className="flex transition-transform duration-300"
           style={{
-            transform: `translateX(-${index * (cardWidth + GAP)}px)`,
-            gap: `${GAP}px`,
+            transform: `translateX(-${index * (cardWidth + gap)}px)`,
+            gap: `${gap}px`,
           }}
         >
           {productData.map((item) => (
@@ -101,7 +72,6 @@ export const ReusableFeaturedProducts = ({
               className="flex-shrink-0 group relative cursor-pointer"
               style={{ width: cardWidth }}
             >
-              {/* Image Box */}
               <div className="relative h-[288px] w-full rounded-lg overflow-hidden">
                 <Image
                   src={item.image}
@@ -110,7 +80,6 @@ export const ReusableFeaturedProducts = ({
                   className="object-cover"
                   sizes="100vw"
                 />
-                {/* Wishlist Button - e.stopPropagation()*/}
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -122,7 +91,6 @@ export const ReusableFeaturedProducts = ({
                 </div>
               </div>
 
-              {/* Product Details */}
               <div className="mt-3 px-3 text-start">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm text-[#635E61] truncate">
@@ -160,7 +128,6 @@ export const ReusableFeaturedProducts = ({
                   </p>
                 </div>
 
-                {/* Add to Bag Button on Hover */}
                 <div className="absolute bottom-0 left-0 w-full bg-white z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                   <button
                     onClick={(e) => {
@@ -178,15 +145,6 @@ export const ReusableFeaturedProducts = ({
           ))}
         </div>
       </div>
-
-      <button
-        onClick={handleNext}
-        className={`absolute right-2 sm:right-4 top-[40%] -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-1 border border-gray-200 transition-opacity duration-200 ${
-          index >= maxIndex ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <MdKeyboardArrowRight className="text-3xl" />
-      </button>
     </div>
   );
 };
