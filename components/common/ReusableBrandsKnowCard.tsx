@@ -30,7 +30,9 @@ export const ReusableBrandsKnowCard = ({
 
   return (
     <div className="bg-[#fcf1ed] rounded-lg pt-10 pb-6 px-3 my-20 relative group">
-      <SectionTitle>Brands To Know</SectionTitle>
+      <SectionTitle className="text-center lg:mb-9 md:mb-7 mb-5">
+        Brands To Know
+      </SectionTitle>
 
       <SliderButtons
         onPrev={handlePrev}
