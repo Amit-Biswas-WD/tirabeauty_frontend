@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis. com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -17,6 +17,30 @@
   --color-seconday: var(--seconday);
   --font-sans: var(--sans);
   --font-poppins: var(--poppins);
+}
+
+/* --- Custom Utility --- */
+@utility section-spacing {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  @variant sm {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  @variant md {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  @variant lg {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
 }
 
 body {
