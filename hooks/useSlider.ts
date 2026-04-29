@@ -1,46 +1,45 @@
-import { useState, useEffect, RefObject } from "react";
+import { useState, useEffect, useRef, RefObject } from "react";
 
-interface SliderProps {
-  dataLength: number;
+interface UseSliderReturn {
+  index: number;
+  handleNext: () => void;
+  handlePrev: () => void;
+  maxIndex: number;
   containerRef: RefObject<HTMLDivElement | null>;
-  initialVisibleCards?: number;
-  gap?: number;
+  cardWidth: number;
+  gap: number;
 }
 
-export const useSlider = ({
-  dataLength,
-  containerRef,
-  initialVisibleCards = 4,
-  gap = 20,
-}: SliderProps) => {
+export const useSlider = (
+  dataLength: number,
+  gap: number = 16,
+): UseSliderReturn => {
   const [index, setIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(initialVisibleCards);
+  const [visibleCards, setVisibleCards] = useState(3);
   const [cardWidth, setCardWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateVisibleCards = () => {
+    const updateDimensions = () => {
       const w = window.innerWidth;
-      let cards = initialVisibleCards;
-
-      if (w < 640)
-        cards = 1.2; // Mobile
-      else if (w < 1024)
-        cards = initialVisibleCards > 2 ? 2.5 : initialVisibleCards; // Tablet
-      else cards = initialVisibleCards; // Desktop
+      let cards = 3;
+      if (w >= 1024) cards = 3;
+      else if (w >= 768) cards = 2;
+      else cards = 1.2;
 
       setVisibleCards(cards);
 
       if (containerRef.current) {
-        const width = containerRef.current.offsetWidth;
-        const totalGap = (Math.ceil(cards) - 1) * gap;
-        setCardWidth((width - totalGap) / cards);
+        const containerWidth = containerRef.current.offsetWidth;
+        const totalGapWidth = (Math.ceil(cards) - 1) * gap;
+        setCardWidth((containerWidth - totalGapWidth) / cards);
       }
     };
 
-    updateVisibleCards();
-    window.addEventListener("resize", updateVisibleCards);
-    return () => window.removeEventListener("resize", updateVisibleCards);
-  }, [dataLength, initialVisibleCards, gap, containerRef]);
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [dataLength, gap]);
 
   const maxIndex = Math.max(0, dataLength - Math.floor(visibleCards));
 
@@ -50,11 +49,11 @@ export const useSlider = ({
 
   return {
     index,
-    cardWidth,
-    visibleCards,
-    maxIndex,
     handleNext,
     handlePrev,
+    maxIndex,
+    containerRef,
+    cardWidth,
     gap,
   };
 };
