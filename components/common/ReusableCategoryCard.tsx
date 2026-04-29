@@ -1,10 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { SectionTitle } from "../ui/SectionTitle";
-
-const GAP = 14;
+import { SliderButtons } from "./SliderButtons";
+import { useSlider } from "@/hooks/useSlider";
 
 interface ResponsiveCards {
   xl?: number;
@@ -33,9 +33,20 @@ export const ReusableCategoryCard = ({
   responsive?: ResponsiveCards;
   height?: number | string;
 }) => {
-  const [index, setIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(responsive.lg || 5);
-  const [cardWidth, setCardWidth] = useState(0);
+  const {
+    containerRef,
+    index,
+    handleNext,
+    handlePrev,
+    maxIndex,
+    cardWidth,
+    gap,
+  } = useSlider({
+    dataLength: topBanner.length,
+    variant: "category",
+    gap: 14,
+    responsive,
+  });
 
   const isTailwind = typeof height === "string" && height.includes(":");
   const finalStyle = !isTailwind
@@ -43,64 +54,23 @@ export const ReusableCategoryCard = ({
     : {};
   const finalClass = isTailwind ? height : "";
 
-  useEffect(() => {
-    const updateVisibleCards = () => {
-      const w = window.innerWidth;
-      let cards = responsive.xl || 6;
-
-      if (w >= 1280) cards = responsive.xl || 6;
-      else if (w >= 1024) cards = responsive.lg || 5;
-      else if (w >= 768) cards = responsive.md || 4;
-      else cards = responsive.sm || 2;
-
-      setVisibleCards(cards);
-
-      const container = document.getElementById("top-categories-container");
-      if (container) {
-        const width = container.offsetWidth;
-        const totalGap = (cards - 1) * GAP;
-        setCardWidth((width - totalGap) / cards);
-      }
-    };
-
-    updateVisibleCards();
-    window.addEventListener("resize", updateVisibleCards);
-    return () => window.removeEventListener("resize", updateVisibleCards);
-  }, [responsive]);
-
-  const maxIndex = Math.max(0, topBanner.length - visibleCards);
-
-  const handleNext = () => {
-    setIndex((prev) => (prev >= maxIndex ? prev : prev + 1));
-  };
-
-  const handlePrev = () => {
-    setIndex((prev) => (prev <= 0 ? prev : prev - 1));
-  };
-
   return (
-    <div
-      id="top-categories-container"
-      className="container mx-auto text-[#211A1E] font-normal relative overflow-hidden section-spacing"
-    >
+    <div className="container mx-auto text-[#211A1E] font-normal relative overflow-hidden section-spacing">
       <SectionTitle>{headingTitle}</SectionTitle>
 
-      <button
-        onClick={handlePrev}
-        className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-1 border border-gray-200
-          transition-opacity duration-200
-          ${index <= 0 ? "opacity-0 pointer-events-none" : "opacity-100"}
-        `}
-      >
-        <MdKeyboardArrowLeft className="text-3xl" />
-      </button>
+      <SliderButtons
+        onPrev={handlePrev}
+        onNext={handleNext}
+        isFirst={index <= 0}
+        isLast={index >= maxIndex}
+      />
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden" ref={containerRef}>
         <div
           className="flex transition-transform duration-300"
           style={{
-            transform: `translateX(-${index * (cardWidth + GAP)}px)`,
-            gap: `${GAP}px`,
+            transform: `translateX(-${index * (cardWidth + gap)}px)`,
+            gap: `${gap}px`,
           }}
         >
           {topBanner.map((item) => (
@@ -156,16 +126,6 @@ export const ReusableCategoryCard = ({
           ))}
         </div>
       </div>
-
-      <button
-        onClick={handleNext}
-        className={`absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-1 border border-gray-200
-          transition-opacity duration-200
-          ${index >= maxIndex ? "opacity-0 pointer-events-none" : "opacity-100"}
-        `}
-      >
-        <MdKeyboardArrowRight className="text-3xl" />
-      </button>
     </div>
   );
 };

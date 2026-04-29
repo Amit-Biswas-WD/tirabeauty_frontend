@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaAngleRight } from "react-icons/fa6";
 import { useSlider } from "@/hooks/useSlider";
 import { SliderButtons } from "./SliderButtons";
+import { SectionTitle } from "../ui/SectionTitle";
 
 interface BrandItem {
   id: number;
@@ -18,18 +19,18 @@ export const ReusableBrandsKnowCard = ({
   brandKnowData,
 }: ReusableBrandsKnowCardProps) => {
   const {
+    containerRef,
     index,
     handleNext,
     handlePrev,
     maxIndex,
-    containerRef,
     cardWidth,
     gap,
-  } = useSlider(brandKnowData.length);
+  } = useSlider({ dataLength: brandKnowData.length, variant: "brand" });
 
   return (
     <div className="bg-[#fcf1ed] rounded-lg pt-10 pb-6 px-3 my-20 relative group">
-      <h3 className="text-2xl font-normal text-center pb-6">Brands To Know</h3>
+      <SectionTitle>Brands To Know</SectionTitle>
 
       <SliderButtons
         onPrev={handlePrev}
