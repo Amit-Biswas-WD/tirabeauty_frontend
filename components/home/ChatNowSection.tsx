@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const ChatNowSection = () => {
   return (
-    <div className="w-full overflow-hidden my-16">
+    <div className="w-full overflow-hidden section-spacing !px-0">
       <Image
         src="/images/home/benefit_bar/chat_now.jpg"
         alt="Chat Now"

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { SliderButtons } from "./SliderButtons";
 import { useSlider } from "@/hooks/useSlider";
+import { SectionTitle } from "../ui/SectionTitle";
 
 export interface BrandItem {
   id: number;
@@ -39,7 +40,7 @@ export const ReusableNewBrandCard = ({
 
   return (
     <div className="container mx-auto text-[#211A1E] font-normal relative overflow-hidden section-spacing">
-      <div className="text-2xl mb-6 px-2 sm:px-0">{headingTitle}</div>
+      <SectionTitle>{headingTitle}</SectionTitle>
 
       <SliderButtons
         onPrev={handlePrev}

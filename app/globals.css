@@ -28,18 +28,18 @@
   margin-bottom: 8px;
 
   @variant sm {
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: 22px;
+    margin-bottom: 22px;
   }
 
   @variant md {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   @variant lg {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
 
