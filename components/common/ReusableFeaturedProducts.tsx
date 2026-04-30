@@ -122,13 +122,13 @@ export const ReusableFeaturedProducts = ({
                   <span className="text-sm font-medium">({item.discount})</span>
                 </div>
 
-                <div className="mt-1.5 mb-2">
+                <div className="mt-1.5">
                   <p className="bg-[#f4f4f4] w-fit px-2.5 p-1 rounded-full">
                     <span className="text-sm">{item.offer}</span>
                   </p>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full bg-white z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                <div className="absolute bottom-0 left-0 w-full bg-white z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-150">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -139,7 +139,8 @@ export const ReusableFeaturedProducts = ({
                     Add to Bag
                   </button>
                 </div>
-                <div className="h-[56px] invisible"></div>
+
+                <div className="h-[50px] md:invisible"></div>
               </div>
             </div>
           ))}
