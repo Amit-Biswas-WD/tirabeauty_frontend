@@ -1,18 +1,20 @@
 "use client";
 
 import { ReactNode } from "react";
+import Heading, { HeadingProps } from "./Heading";
 
-interface SectionTitleProps {
+interface SectionTitleProps extends HeadingProps {
   children: ReactNode;
-  className?: string;
 }
 
-export const SectionTitle = ({ children, className }: SectionTitleProps) => {
+export const SectionTitle = ({
+  children,
+  className,
+  ...props
+}: SectionTitleProps) => {
   return (
-    <h2
-      className={`lg:text-2xl md:text-[22px] text-[20px] text-[#211A1E] font-normal lg:mb-4 md:mb-3 mb-2 ${className}`}
-    >
-      {children}
-    </h2>
+    <div className={className}>
+      <Heading {...props}>{children}</Heading>
+    </div>
   );
 };

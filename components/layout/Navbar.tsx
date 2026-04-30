@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FiChevronRight } from "react-icons/fi";
@@ -12,6 +13,8 @@ import { LiaUserCircle } from "react-icons/lia";
 export const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const router = useRouter();
 
   return (
     <>
@@ -69,7 +72,10 @@ export const Navbar = () => {
               onClick={() => setIsExpanded((p) => !p)}
             />
             <HiOutlineShoppingBag className="w-5 h-5" />
-            <div className="bg-[#fff3f3] p-2 rounded-full">
+            <div
+              onClick={() => router.push("/auth/login")}
+              className="bg-[#fff3f3] p-2 rounded-full"
+            >
               <LiaUserCircle className="w-5 h-5 text-[#db0000]" />
             </div>
           </div>
