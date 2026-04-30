@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import { BiChevronRight } from "react-icons/bi";
+import { SectionTitle } from "../ui/SectionTitle";
 
 export const ArticleProductCard = () => {
   return (
-    <div className="px-4 lg:my-16 md:my-12 my-10 text-[#211A1E]">
-      <div className="mb-8 lg:mb-12 max-w-4xl md:w-2xl min-w-[300px] mx-auto text-center">
-        <h2 className="md:text-3xl text-xl font-medium">
+    <div className="px-2 lg:my-14 md:my-10 my-8 text-[#211A1E]">
+      <div className="mb-5 md:mb-7 lg:mb-9 max-w-4xl md:w-2xl min-w-[300px] mx-auto text-center">
+        <SectionTitle className="lg:text-[28px] md:text-2xl text-xl">
           Whether you,re revisiting a nostalgic favourite or trying it for the
           first time, we,ve rounded up the best blue eyeliners out there.
-        </h2>
+        </SectionTitle>
       </div>
       <div className="flex items-stretch md:gap-8 gap-4 w-1150px mx-auto ">
         <div className="relative h-[180px] w-[180px] flex-shrink-0 border border-[#f4e1dd]">
@@ -36,9 +37,9 @@ export const ArticleProductCard = () => {
             </p>
           </div>
 
-          <p className="md:text-xl text-lg font-semibold flex items-center gap-2 mt-4 cursor-pointer">
+          <button className="md:text-xl text-lg font-semibold flex items-center gap-2 mt-4 cursor-pointer">
             Add to Cart <BiChevronRight className="w-6 h-6" />
-          </p>
+          </button>
         </div>
       </div>
     </div>
