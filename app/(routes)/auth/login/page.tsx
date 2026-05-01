@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
+import { GoogleLogin } from "@/components/auth/GoogleLogin";
 import { HiOutlineEyeSlash, HiOutlineEye } from "react-icons/hi2";
-import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,16 +18,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-lg">
+    <div className="flex w-lg min-h-screen items-center justify-center text-[#211A1E] px-4">
+      <div className="w-full space-y-6 rounded-xl bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#211A1E]">Welcome Back</h1>
+          <h1 className="lg:text-3xl md:text-2xl text-xl font-bold">
+            Welcome Back
+          </h1>
           <p className="mt-2 text-sm text-gray-600">
             Please enter your details to login.
           </p>
         </div>
-
         {/* Form */}
         <form
           onSubmit={handleSubmit}
@@ -61,7 +63,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-[38px] text-gray-500 hover:text-black focus:outline-none"
+                className="absolute right-3 md:top-[44px] top-[38px] text-gray-500 hover:text-black focus:outline-none"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -79,7 +81,7 @@ export default function LoginPage() {
               <input
                 id="remember-me"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-[#211A1E] focus:ring-[#211A1E] cursor-pointer"
+                className="h-4 w-4 rounded border-gray-300 focus:ring-[#211A1E] cursor-pointer"
               />
               <label
                 htmlFor="remember-me"
@@ -107,13 +109,13 @@ export default function LoginPage() {
           </button>
         </form>
 
+        {/* Google Login */}
+        <GoogleLogin />
+
         {/* Footer */}
         <p className="text-center text-sm text-gray-600">
           Don,t have an account?{" "}
-          <Link
-            href="/auth/register"
-            className="font-semibold text-[#211A1E] hover:underline"
-          >
+          <Link href="/auth/register" className="font-semibold hover:underline">
             Sign up
           </Link>
         </p>

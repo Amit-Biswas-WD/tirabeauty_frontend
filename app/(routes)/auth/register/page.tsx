@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { HiOutlineEyeSlash, HiOutlineEye } from "react-icons/hi2";
+import { GoogleLogin } from "@/components/auth/GoogleLogin";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -23,13 +24,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-lg">
+    <div className="flex w-lg min-h-screen items-center justify-center text-[#211A1E] px-4">
+      <div className="w-full space-y-6 rounded-xl bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#211A1E]">Welcome Back</h1>
+          <h1 className="lg:text-3xl md:text-2xl text-xl font-bold">
+            Welcome Back
+          </h1>
           <p className="mt-2 text-sm text-gray-600">
-            Please enter your details to login.
+            Please enter your details to register.
           </p>
         </div>
 
@@ -79,7 +82,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-[38px] text-gray-500 hover:text-black"
+                className="absolute right-3 md:top-[44px] top-[38px] text-gray-500 hover:text-black"
               >
                 {showPassword ? (
                   <HiOutlineEyeSlash size={20} />
@@ -104,7 +107,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-[38px] text-gray-500 hover:text-black"
+                className="absolute right-3 md:top-[44px] top-[38px] text-gray-500 hover:text-black"
               >
                 {showConfirmPassword ? (
                   <HiOutlineEyeSlash size={20} />
@@ -147,13 +150,13 @@ export default function RegisterPage() {
           </button>
         </form>
 
+        {/* Google Login */}
+        <GoogleLogin />
+
         {/* Footer */}
         <p className="text-center text-sm text-gray-600">
           Don,t have an account?{" "}
-          <a
-            href="/auth/login"
-            className="font-semibold text-[#211A1E] hover:underline"
-          >
+          <a href="/auth/login" className="font-semibold hover:underline">
             Sign in
           </a>
         </p>

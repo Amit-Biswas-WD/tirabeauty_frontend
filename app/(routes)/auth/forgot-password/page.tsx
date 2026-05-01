@@ -15,11 +15,13 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-lg">
+    <div className="flex w-lg min-h-screen items-center justify-center text-[#211A1E] px-4">
+      <div className="w-full space-y-8 rounded-xl bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#211A1E]">Forgot Password</h1>
+          <h1 className="lg:text-3xl md:text-2xl text-xl font-bold">
+            Forgot Password
+          </h1>
           <p className="mt-2 text-sm text-gray-600">
             Enter your email address and we,ll send you a link to reset your
             password.
@@ -58,7 +60,7 @@ export default function ForgotPasswordPage() {
         <div className="text-center mt-4">
           <Link
             href="/auth/login"
-            className="text-sm font-medium text-[#211A1E] hover:underline"
+            className="text-sm font-medium hover:underline"
           >
             ← Back to Login
           </Link>
