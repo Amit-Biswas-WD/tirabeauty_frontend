@@ -8,7 +8,7 @@ export const MakeUpTopCategories = () => {
     <div>
       <ReusableCategoryCard
         topBanner={CollectionImgData.makeup}
-        headingTitle="Makeup Top Categories"
+        headingTitle="Top Categories"
         responsive={{ xl: 4, lg: 4, md: 3, sm: 2 }}
         height={210}
       />

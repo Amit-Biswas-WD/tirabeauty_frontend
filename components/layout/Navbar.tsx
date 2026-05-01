@@ -10,6 +10,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
 import { LiaUserCircle } from "react-icons/lia";
 
+const categories = [
+  { id: 2, label: "Makeup", href: "/sections/makeup" },
+  { id: 3, label: "Skin", href: "/sections/skin" },
+  { id: 4, label: "Hair", href: "/sections/hair" },
+  { id: 6, label: "Men", href: "/sections/men" },
+  { id: 7, label: "Bath & Body", href: "/sections/bath-body" },
+];
+
 export const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,9 +49,12 @@ export const Navbar = () => {
 
             <div className="flex flex-col gap-0.5">
               <p>Welcome</p>
-              <Link href="/" className="flex items-center gap-0.5">
-                Login / Sign Up <FiChevronRight className="w-4 h-4" />
-              </Link>
+              <span className="flex items-center gap-0.5">
+                <Link href="/auth/login">Login </Link>
+                {"  "} /{"  "}
+                <Link href="/auth/register">Sign Up</Link>{" "}
+                <FiChevronRight className="w-4 h-4" />
+              </span>
             </div>
           </div>
 
@@ -105,7 +116,7 @@ export const Navbar = () => {
 
       {/* ================= Mobile Drawer ================= */}
       <aside
-        className={`fixed top-0 left-0 h-full w-[260px] bg-white z-50
+        className={`fixed top-0 left-0 h-full sm:w-[420px] w-[260px] bg-white z-50
         transform transition-transform duration-200
         ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
@@ -124,19 +135,17 @@ export const Navbar = () => {
         </div>
 
         {/* Drawer Menu */}
-        <div className="flex flex-col p-4 gap-4 text-sm">
-          {["Brands", "Tira Red", "Offers", "Top Shelf", "For You"].map(
-            (item) => (
-              <Link
-                key={item}
-                href="/"
-                className="border-b pb-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </Link>
-            ),
-          )}
+        <div className="flex flex-col p-2 gap-4 text-sm">
+          {categories.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              className="border-b pb-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </aside>
     </>
